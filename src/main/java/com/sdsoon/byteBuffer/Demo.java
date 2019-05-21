@@ -20,10 +20,18 @@ public class Demo {
         String s = "FE0A4A4E3132715067734D34374550534976099CFE";
 
         byteBuffer.put(s.getBytes());
+        /**
+         * flip();
+         * 该方法,使读/写开始的位置从0开始,
+         * 即:pos=0;lim=真是存储的数据量,cap为最大数据量
+         */
         byteBuffer.flip();
 
         byte[] b = new byte[byteBuffer.remaining()];
 
+        /**
+         *
+         */
         byteBuffer.get(b);
         String s2 = new String(b);
         System.out.println(s2);
