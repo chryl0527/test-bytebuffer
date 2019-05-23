@@ -16,7 +16,7 @@ public class Demo {
      * @param args
      */
     public static void main(String args[]) {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(88);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(128);
         String s = "FE0A4A4E3132715067734D34374550534976099CFE";
 
         byteBuffer.put(s.getBytes());
@@ -27,11 +27,36 @@ public class Demo {
          */
         byteBuffer.flip();
 
+        /**
+         * 测试:remaining
+         * remaining();
+         *返回:pos和cap中间的int值
+         *
+         * 一般先用byteBuffer.flip():使pos=0,lim=真实数据量;
+         * 再用byteBuffer.remaining():使求出pos=0和lim之间的数据量;
+         * 再用byteBuffer.get(b):放到byte[]里;
+         * String str = new String(b);即可
+         */
+        byteBuffer.position(3);
+        System.out.println(byteBuffer);
+        System.out.println(byteBuffer.remaining());
+
+
+        byteBuffer.position(1);
+        System.out.println(byteBuffer);
+        System.out.println(byteBuffer.remaining());
+
+        byteBuffer.position(0);
+        System.out.println(byteBuffer);
+        System.out.println(byteBuffer.remaining());
+
+
+        System.out.println("======================================");
+        /**
+         *写到byte[]里
+         */
         byte[] b = new byte[byteBuffer.remaining()];
 
-        /**
-         *
-         */
         byteBuffer.get(b);
         String s2 = new String(b);
         System.out.println(s2);
