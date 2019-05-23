@@ -13,7 +13,6 @@ import java.nio.ByteBuffer;
 public class Demo {
 
     public static void main(String args[]) {
-
         //netty-byteBuf
         ByteBuf byteBuf = Unpooled.buffer(88);
 
@@ -31,6 +30,10 @@ public class Demo {
 
         //#######################################################//上面已经discard已读的数据了
         byteBuf.writeBytes(s.getBytes());//再次转化
+//        int i = byteBuf.forEachByte(ByteProcessor.);//遍历
+//        System.out.println(i);
+
+
         //byteBuf->byteBuffer
         ByteBuffer byteBuffer = byteBuf.nioBuffer();
         System.out.println("byteBuffer:" + byteBuffer);
